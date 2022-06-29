@@ -98,7 +98,7 @@ class Tree:
                         stop = True
                     else:
                         cur = cur.right
-                elif d <= cur.left:
+                elif d <= cur.data:
                     if not cur.left:
                         cur.left = Node(d)
                         stop = True
@@ -111,6 +111,7 @@ class Tree:
         if node.left:
             self.__crawlHeight(node.left, depth + 1, height)
     def __crawlPrint(self, node: Node, pos: []):
+        print(node.data, end='')
         if node.left:
             pos.append([len(str(node.data)), '|'])
         if node.right:
@@ -118,6 +119,7 @@ class Tree:
             self.__crawlPrint(node.right, pos)
         if node.left:
             pos[-1][1] = ' '
+            print('')
             for k in range(2):
                 for el in pos[:-1]:
                     for _ in range(el[0] - 1):
@@ -148,7 +150,6 @@ d3.d1.n = 98
 d3.d1.b2.n = 1782
 d3.d1.b1.n = 362232
 t.insert(d3.n)
-
 t.insert(d3.d2.n)
 t.insert(d3.d1.n)
 t.insert(d3.d1.b2.n)
